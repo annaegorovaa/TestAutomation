@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SeleniumTestEx1 {
+public class WebPage1Test {
 
     //Create a new test in a new Java class, specify test name in accordance with checking functionality
     @Test
-    public void webPageTest() {
+    public void testWebPageLogin() {
         //Open test site by URL
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
