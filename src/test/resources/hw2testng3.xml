@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="suite">
+    <test name="Annotated test">
+        <classes>
+            <class name="homework2.SeleniumTest"/>
+        </classes>
+    </test>
+</suite>
