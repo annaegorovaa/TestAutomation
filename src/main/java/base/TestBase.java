@@ -9,13 +9,13 @@ public abstract class TestBase {
 
     public static WebDriver driver;
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void setUp() {
         driver = new ChromeDriver();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
         driver.close();
     }
