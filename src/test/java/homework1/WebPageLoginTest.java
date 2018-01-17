@@ -54,14 +54,14 @@ public class WebPageLoginTest {
         //6 Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> images = driver.findElements(By.xpath("//*[@class='benefit-icon']"));
         assertEquals(images.size(), 4);
-        for (WebElement icon: images) {
+        for (WebElement icon : images) {
             assertTrue(icon.isDisplayed());
         }
 
         //7 Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> texts = driver.findElements(By.xpath("//*[@class='benefit-txt']"));
         assertEquals(texts.size(), 4);
-        for (WebElement text: texts) {
+        for (WebElement text : texts) {
             assertTrue(text.isDisplayed());
         }
         assertEquals(texts.get(0).getText().replaceAll("\n", " "),
