@@ -46,7 +46,8 @@ public class WebPageLoginTest {
         driver.findElement(By.xpath("//*[contains(@type, 'submit')]")).click();
 
         //4 Assert User name in the left-top side of screen that user is loggined
-        assertEquals(driver.findElement(By.xpath("//div//span[contains(., 'Piter Chailovskii')]")).getText(), "PITER CHAILOVSKII");
+        assertEquals(driver.findElement(By.xpath("//div//span[contains(., 'Piter Chailovskii')]")).getText(),
+                "PITER CHAILOVSKII");
 
         //5 Assert Browser title
         assertEquals(driver.getTitle(), "Index Page");
