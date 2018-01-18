@@ -4,25 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static java.lang.System.setProperty;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     @BeforeSuite
     public void setUpBeforeSuite() {
         setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
     }
 
     @BeforeTest
     public void setUpBeforeTest() {
         driver = new ChromeDriver();
-
     }
 
     @BeforeMethod
@@ -52,13 +51,12 @@ public class SeleniumTest {
         driver.manage().window().maximize();
 
         driver.navigate().to("https://www.epam.com");
-        Assert.assertEquals(driver.getTitle(), "EPAM | Software Product Development Services");
+        assertEquals(driver.getTitle(), "EPAM | Software Product Development Services");
 
-        WebElement element = driver.findElement(By.cssSelector(".header-search__button"));
-        element.click();
+        driver.findElement(By.xpath("//button[contains(@class, 'header-search')]")).click();
 
-        WebElement menuButton = driver.findElement(By.cssSelector(".hamburger-menu__button"));
-        Assert.assertTrue(menuButton.isDisplayed());
-        Assert.assertEquals(menuButton.getText(), "MENU");
+        WebElement menuButton = driver.findElement(By.xpath("//button[contains(@class, 'hamburger-menu')]"));
+        assertTrue(menuButton.isDisplayed());
+        assertEquals(menuButton.getText(), "MENU");
     }
 }
