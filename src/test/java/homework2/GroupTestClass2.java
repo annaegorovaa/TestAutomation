@@ -10,7 +10,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class GroupTestClass2 extends TestBase{
+public class GroupTestClass2 extends TestBase {
 
     @Test(groups = {"Regression"})
     public void assertTitleTest() {
@@ -21,7 +21,7 @@ public class GroupTestClass2 extends TestBase{
     public void assertImagesDisplayedTest() {
         List<WebElement> images = driver.findElements(By.xpath("//*[@class='benefit-icon']"));
         assertEquals(images.size(), 4);
-        for (WebElement icon: images) {
+        for (WebElement icon : images) {
             assertTrue(icon.isDisplayed());
         }
     }

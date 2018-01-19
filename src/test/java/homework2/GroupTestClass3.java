@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class GroupTestClass3 extends TestBase{
+public class GroupTestClass3 extends TestBase {
 
     @Test(groups = {"Smoke", "Regression"})
     public void headerTextDisplayedTest() {
