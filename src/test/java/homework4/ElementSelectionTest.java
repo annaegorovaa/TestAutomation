@@ -7,7 +7,7 @@ import pageObjects.SelenideIndexPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class ElementSelectionTest extends SelenideTestBase{
+public class ElementSelectionTest extends SelenideTestBase {
 
     private SelenideIndexPage indexPage = new SelenideIndexPage();
 
