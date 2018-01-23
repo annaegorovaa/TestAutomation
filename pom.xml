@@ -61,8 +61,7 @@
                 <version>2.20.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>C:\Users\home\IdeaProjects\javatestautoAE\src\test\resources\testng.xml
-                        </suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/hw5testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
