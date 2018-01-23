@@ -1,6 +1,7 @@
 package pageObjects;
 
 import com.codeborne.selenide.SelenideElement;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
@@ -12,10 +13,12 @@ import static org.testng.Assert.assertEquals;
 
 public class SelenideIndexPage2 {
 
+    @Step
     public void openURL() {
         open("https://jdi-framework.github.io/tests");
     }
 
+    @Step
     public void login(String name, String password) {
         $(".uui-profile-menu .dropdown-toggle").click();
         $("#Login").sendKeys(name);
@@ -23,16 +26,19 @@ public class SelenideIndexPage2 {
         $(".form-horizontal [type='submit']").click();
     }
 
+    @Step
     public void checkUserIsLoggedIn() {
         $(".uui-profile-menu span").shouldHave(text("PITER CHAILOVSKII"));
     }
 
+    @Step
     public void selectDatesPage() {
         $(".dropdown a[href^='page1']").click();
         $("a[href^='page4']").click();
         assertEquals(getWebDriver().getTitle(), "Dates");
     }
 
+    @Step
     public void selectMaxSliderRange(int left, int right) {
         SelenideElement slider = $(".uui-slider");
         SelenideElement leftSlider = slider.find("a:nth-child(1)");
