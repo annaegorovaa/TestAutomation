@@ -12,11 +12,12 @@ public abstract class TestBase {
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         RemoteWebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
         drivers.set(driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void cleanupBrowser() {
         RemoteWebDriver driver = driver();
         driver.quit();
