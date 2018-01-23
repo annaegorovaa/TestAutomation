@@ -10,11 +10,11 @@ public class GroupTestClass3 extends TestBase {
 
     @Test(groups = {"Smoke", "Regression"})
     public void headerTextDisplayedTest() {
-        assertTrue(driver.findElement(By.xpath("//h3[contains(@class, 'main-title')]")).isDisplayed());
+        assertTrue(driver().findElement(By.xpath("//h3[contains(@class, 'main-title')]")).isDisplayed());
     }
 
     @Test(groups = {"Smoke", "Regression"})
     public void mainTextDisplayedTest() {
-        assertTrue(driver.findElement(By.xpath("//p[contains(@class, 'main-txt')]")).isDisplayed());
+        assertTrue(driver().findElement(By.xpath("//p[contains(@class, 'main-txt')]")).isDisplayed());
     }
 }

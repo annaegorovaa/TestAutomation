@@ -14,12 +14,12 @@ public class GroupTestClass2 extends TestBase {
 
     @Test(groups = {"Regression"})
     public void assertTitleTest() {
-        assertEquals(driver.getTitle(), "Index Page");
+        assertEquals(driver().getTitle(), "Index Page");
     }
 
     @Test(groups = {"Regression"})
     public void assertImagesDisplayedTest() {
-        List<WebElement> images = driver.findElements(By.xpath("//*[@class='benefit-icon']"));
+        List<WebElement> images = driver().findElements(By.xpath("//*[@class='benefit-icon']"));
         assertEquals(images.size(), 4);
         for (WebElement icon : images) {
             assertTrue(icon.isDisplayed());
@@ -28,7 +28,7 @@ public class GroupTestClass2 extends TestBase {
 
     @Test(groups = {"Regression"})
     public void assert4ElementsTest() {
-        List<WebElement> texts = driver.findElements(By.xpath("//*[@class='benefit-txt']"));
+        List<WebElement> texts = driver().findElements(By.xpath("//*[@class='benefit-txt']"));
         assertEquals(texts.size(), 4);
     }
 }

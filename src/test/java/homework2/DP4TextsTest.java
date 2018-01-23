@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 
 public class DP4TextsTest extends TestBase {
 
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = true )
     public Object[][] dp() {
         return new Object[][] {
                 {0, "To include good practices and ideas from successful EPAM projec"},
@@ -24,7 +24,7 @@ public class DP4TextsTest extends TestBase {
 
     @Test(dataProvider = "dp")
     public void assert4TextsUsingDPTest(int index, String text) {
-        List<WebElement> elements = driver.findElements(By.xpath("//*[@class='benefit-txt']"));
+        List<WebElement> elements = driver().findElements(By.xpath("//*[@class='benefit-txt']"));
         assertEquals(elements.get(index).getText().replaceAll("\n", " "), text);
     }
 }
