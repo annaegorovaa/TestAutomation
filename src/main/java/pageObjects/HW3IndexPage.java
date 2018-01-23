@@ -10,7 +10,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class hw3IndexPage {
+public class HW3IndexPage {
 
     @FindBy(css = ".uui-profile-menu .dropdown-toggle")
     private WebElement loginFormButton;
@@ -39,6 +39,10 @@ public class hw3IndexPage {
     @FindBy(css = "div .main-txt")
     private WebElement mainText;
 
+    public void open(WebDriver driver) {
+        driver.navigate().to("https://jdi-framework.github.io/tests");
+    }
+
     public void login(String name, String password) {
         loginFormButton.click();
 
@@ -51,11 +55,11 @@ public class hw3IndexPage {
         assertEquals(driver.getTitle(), "Index Page");
     }
 
-    public void checkUserIsLoggedIn(WebDriver driver) {
+    public void checkUserIsLoggedIn() {
         assertEquals(userName.getText(), "PITER CHAILOVSKII");
     }
 
-    public void check4ImagesDisplayed(WebDriver driver) {
+    public void check4ImagesDisplayed() {
         assertEquals(benefitIcon.size(), 4);
         for (WebElement icon : benefitIcon) {
             assertTrue(icon.isDisplayed());
@@ -69,11 +73,11 @@ public class hw3IndexPage {
         }
     }
 
-    public void checkHomePageHeaderDisplayed(WebDriver driver) {
+    public void checkHomePageHeaderDisplayed() {
         assertTrue(header.isDisplayed());
     }
 
-    public void checkHomePageMainTextDisplayed(WebDriver driver) {
+    public void checkHomePageMainTextDisplayed() {
         assertTrue(mainText.isDisplayed());
     }
 }
