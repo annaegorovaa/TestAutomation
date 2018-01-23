@@ -6,10 +6,15 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
 public class SelenideIndexPage2 {
+
+    public void openURL() {
+        open("https://jdi-framework.github.io/tests");
+    }
 
     public void login(String name, String password) {
         $(".uui-profile-menu .dropdown-toggle").click();

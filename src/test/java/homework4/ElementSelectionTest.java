@@ -1,11 +1,12 @@
 package homework4;
 
 import base.SelenideTestBase;
+import enums.CheckboxElementsEnum;
+import enums.ColorDropdownEnum;
+import enums.MetalRadiosEnum;
 import enums.ServiceMenuItemsEnum;
 import org.testng.annotations.Test;
 import pageObjects.SelenideIndexPage;
-
-import static com.codeborne.selenide.Selenide.open;
 
 public class ElementSelectionTest extends SelenideTestBase {
 
@@ -13,23 +14,51 @@ public class ElementSelectionTest extends SelenideTestBase {
 
     @Test
     public void testElementSelection() {
-        open("https://jdi-framework.github.io/tests");
+
+        //1 Open test site by URL
+        indexPage.openURL();
+
+        //2 Perform login
         indexPage.login("epam", "1234");
+
+        //3 Assert User name in the left-top side of screen that user is loggined
         indexPage.checkUserIsLoggedIn();
+
+        //4 Check interface on Home page, it contains all needed elements.
         indexPage.checkHomepageInterface();
+
+        //5 Click on "Service" subcategory in the header and check that drop down contains options
         indexPage.checkHeaderServiceMenu(ServiceMenuItemsEnum.values());
+
+        //6 Click on Service subcategory in the left section and check that drop down contains options
         indexPage.checkLeftServiceMenu(ServiceMenuItemsEnum.values());
+
+        //7 Open through the header menu Service -> Different Elements Page
         indexPage.openDifferentElementPage();
+
+        //8 Check interface on Service page, it contains all needed elements.
         indexPage.checkServicePageInterface();
+
+        //9 Select and assert checkboxes
         indexPage.selectWaterWindCheckboxes();
+
+        //10 Select radio
         indexPage.selectRadio();
+
+        //11 Select in dropdown
         indexPage.selectDropdown();
-        indexPage.checkLog(0, "Colors", "Yellow");
-        indexPage.checkLog(1, "metal", "Selen");
-        indexPage.checkLog(2, "Wind", true);
-        indexPage.checkLog(3, "Water", true);
+
+        //12 Check in logs section selected values and status (true|false)
+        indexPage.checkLog(0, "Colors", ColorDropdownEnum.YELLOW.color);
+        indexPage.checkLog(1, "metal", MetalRadiosEnum.SELEN.metal);
+        indexPage.checkLog(2, CheckboxElementsEnum.WIND.element, true);
+        indexPage.checkLog(3, CheckboxElementsEnum.WATER.element, true);
+
+        //13 Unselect and assert checkboxes
         indexPage.removeWaterWindSelection();
-        indexPage.checkLog(0, "Wind", false);
-        indexPage.checkLog(1, "Water", false);
+
+        //14 Check in logs section unselected values and status (true|false)
+        indexPage.checkLog(0, CheckboxElementsEnum.WIND.element, false);
+        indexPage.checkLog(1, CheckboxElementsEnum.WATER.element, false);
     }
 }

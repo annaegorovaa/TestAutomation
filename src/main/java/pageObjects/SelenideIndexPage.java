@@ -1,15 +1,21 @@
 package pageObjects;
 
 import com.codeborne.selenide.SelenideElement;
+import enums.CheckboxElementsEnum;
+import enums.ColorDropdownEnum;
+import enums.MetalRadiosEnum;
 import enums.ServiceMenuItemsEnum;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SelenideIndexPage {
+
+    public void openURL() {
+        open("https://jdi-framework.github.io/tests");
+    }
 
     public void login(String name, String password) {
         $(".uui-profile-menu .dropdown-toggle").click();
@@ -58,18 +64,18 @@ public class SelenideIndexPage {
     }
 
     public void selectWaterWindCheckboxes() {
-        SelenideElement waterCheckbox = findCheckbox(0, "Water");
+        SelenideElement waterCheckbox = findCheckbox(0, CheckboxElementsEnum.WATER);
         waterCheckbox.find("input").click();
         waterCheckbox.find("input").shouldBe(checked);
 
-        SelenideElement windCheckbox = findCheckbox(2, "Wind");
+        SelenideElement windCheckbox = findCheckbox(2, CheckboxElementsEnum.WIND);
         windCheckbox.find("input").click();
         windCheckbox.find("input").shouldBe(checked);
     }
 
     public void selectRadio() {
         SelenideElement radio = $$(".label-radio").get(3);
-        radio.shouldHave(text("Selen"));
+        radio.shouldHave(text(MetalRadiosEnum.SELEN.metal));
         radio.find("input").click();
         radio.find("input").shouldBe(checked);
     }
@@ -78,7 +84,7 @@ public class SelenideIndexPage {
         SelenideElement dropdown = $(".colors");
         dropdown.click();
         $$(".colors option").get(3).click();
-        dropdown.shouldHave(text("Yellow"));
+        dropdown.shouldHave(text(ColorDropdownEnum.YELLOW.color));
     }
 
     public void checkLog(int index, String property, String value) {
@@ -95,18 +101,18 @@ public class SelenideIndexPage {
     }
 
     public void removeWaterWindSelection() {
-        SelenideElement waterCheckbox = findCheckbox(0, "Water");
+        SelenideElement waterCheckbox = findCheckbox(0, CheckboxElementsEnum.WATER);
         waterCheckbox.find("input").click();
         waterCheckbox.find("input").shouldNotBe(checked);
 
-        SelenideElement windCheckbox = findCheckbox(2, "Wind");
+        SelenideElement windCheckbox = findCheckbox(2, CheckboxElementsEnum.WIND);
         windCheckbox.find("input").click();
         windCheckbox.find("input").shouldNotBe(checked);
     }
 
-    private SelenideElement findCheckbox(int index, String name) {
+    private SelenideElement findCheckbox(int index, CheckboxElementsEnum element) {
         SelenideElement checkbox = $$(".label-checkbox").get(index);
-        checkbox.shouldHave(text(name));
+        checkbox.shouldHave(text(element.element));
         return checkbox;
     }
 }
