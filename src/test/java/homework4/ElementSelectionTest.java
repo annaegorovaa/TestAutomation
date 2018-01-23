@@ -5,12 +5,27 @@ import enums.CheckboxElementsEnum;
 import enums.ColorDropdownEnum;
 import enums.MetalRadiosEnum;
 import enums.ServiceMenuItemsEnum;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.SelenideIndexPage;
+
+import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ElementSelectionTest extends SelenideTestBase {
 
     private SelenideIndexPage indexPage = new SelenideIndexPage();
+
+    @BeforeTest
+    public void setUp() {
+        getWebDriver();
+    }
+
+    @AfterTest
+    public void tearDown() {
+        close();
+    }
 
     @Test
     public void testElementSelection() {
