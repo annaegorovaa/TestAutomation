@@ -1,6 +1,7 @@
 package homework4;
 
 import base.SelenideTestBase;
+import com.codeborne.selenide.Selenide;
 import enums.CheckboxElementsEnum;
 import enums.ColorDropdownEnum;
 import enums.MetalRadiosEnum;
@@ -15,7 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ElementSelectionTest extends SelenideTestBase {
 
-    private SelenideIndexPage indexPage = new SelenideIndexPage();
+    private SelenideIndexPage indexPage = Selenide.page(SelenideIndexPage.class);
 
     @BeforeTest
     public void setUp() {
