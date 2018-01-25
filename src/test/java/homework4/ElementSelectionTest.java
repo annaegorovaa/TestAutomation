@@ -2,21 +2,27 @@ package homework4;
 
 import base.SelenideTestBase;
 import com.codeborne.selenide.Selenide;
-import enums.CheckboxElementsEnum;
-import enums.ColorDropdownEnum;
-import enums.MetalRadiosEnum;
-import enums.ServiceMenuItemsEnum;
+import enums.*;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.SelenideIndexPage;
+import pageObjects.HW4DifferentElementsPage;
+import pageObjects.HW4IndexPage;
 
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ElementSelectionTest extends SelenideTestBase {
 
-    private SelenideIndexPage indexPage = Selenide.page(SelenideIndexPage.class);
+    private HW4IndexPage indexPage;
+    private HW4DifferentElementsPage differentElementsPage;
+
+    @BeforeClass
+    public void setUpClass() {
+        indexPage = Selenide.page(HW4IndexPage.class);
+        differentElementsPage = Selenide.page(HW4DifferentElementsPage.class);
+    }
 
     @BeforeTest
     public void setUp() {
@@ -53,28 +59,28 @@ public class ElementSelectionTest extends SelenideTestBase {
         indexPage.openDifferentElementPage();
 
         //8 Check interface on Service page, it contains all needed elements.
-        indexPage.checkServicePageInterface();
+        differentElementsPage.checkServicePageInterface();
 
         //9 Select and assert checkboxes
-        indexPage.selectWaterWindCheckboxes();
+        differentElementsPage.selectWaterWindCheckboxes();
 
         //10 Select radio
-        indexPage.selectRadio();
+        differentElementsPage.selectRadio();
 
         //11 Select in dropdown
-        indexPage.selectDropdown();
+        differentElementsPage.selectDropdown();
 
         //12 Check in logs section selected values and status (true|false)
-        indexPage.checkLog(0, "Colors", ColorDropdownEnum.YELLOW.color);
-        indexPage.checkLog(1, "metal", MetalRadiosEnum.SELEN.metal);
-        indexPage.checkLog(2, CheckboxElementsEnum.WIND.element, true);
-        indexPage.checkLog(3, CheckboxElementsEnum.WATER.element, true);
+        differentElementsPage.checkLog(0, MenuTypesEnum.COLORS.menuType, ColorDropdownEnum.YELLOW.color);
+        differentElementsPage.checkLog(1, MenuTypesEnum.METAL.menuType, MetalRadiosEnum.SELEN.metal);
+        differentElementsPage.checkLog(2, CheckboxElementsEnum.WIND.element, BooleanValuesEnum.TRUE.booleanValue);
+        differentElementsPage.checkLog(3, CheckboxElementsEnum.WATER.element, BooleanValuesEnum.TRUE.booleanValue);
 
         //13 Unselect and assert checkboxes
-        indexPage.removeWaterWindSelection();
+        differentElementsPage.removeWaterWindSelection();
 
         //14 Check in logs section unselected values and status (true|false)
-        indexPage.checkLog(0, CheckboxElementsEnum.WIND.element, false);
-        indexPage.checkLog(1, CheckboxElementsEnum.WATER.element, false);
+        differentElementsPage.checkLog(0, CheckboxElementsEnum.WIND.element, BooleanValuesEnum.FALSE.booleanValue);
+        differentElementsPage.checkLog(1, CheckboxElementsEnum.WATER.element, BooleanValuesEnum.FALSE.booleanValue);
     }
 }

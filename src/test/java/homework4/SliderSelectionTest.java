@@ -1,17 +1,27 @@
 package homework4;
 
 import base.SelenideTestBase;
+import com.codeborne.selenide.Selenide;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.SelenideIndexPage2;
+import pageObjects.HW4DatesPage;
+import pageObjects.HW4IndexPage;
 
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class SliderSelectionTest extends SelenideTestBase {
 
-    private SelenideIndexPage2 indexPage = new SelenideIndexPage2();
+    private HW4IndexPage indexPage;
+    private HW4DatesPage datesPage;
+
+    @BeforeClass
+    public void setUpClass() {
+        indexPage = Selenide.page(HW4IndexPage.class);
+        datesPage = Selenide.page(HW4DatesPage.class);
+    }
 
     @BeforeTest
     public void setUp() {
@@ -39,15 +49,15 @@ public class SliderSelectionTest extends SelenideTestBase {
         indexPage.selectDatesPage();
 
         //5 Using drag-and-drop set Range sliders. left - 0, right - 100
-        indexPage.selectMaxSliderRange(0, 100);
+        datesPage.selectMaxSliderRange(0, 100);
 
         //6 Using drag-and-drop set Range sliders. left - 0, right - 0
-        indexPage.selectMaxSliderRange(0, 0);
+        datesPage.selectMaxSliderRange(0, 0);
 
         //7 Using drag-and-drop set Range sliders. left - 100, right - 100
-        indexPage.selectMaxSliderRange(100, 100);
+        datesPage.selectMaxSliderRange(100, 100);
 
         //8 Using drag-and-drop set Range sliders. left - 30, right - 70
-        indexPage.selectMaxSliderRange(30, 70);
+        datesPage.selectMaxSliderRange(30, 70);
     }
 }
