@@ -1,33 +1,13 @@
 package base;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
+import static java.lang.System.setProperty;
 
 public abstract class TestBase {
 
-    private static final ThreadLocal<RemoteWebDriver> drivers = new ThreadLocal<>();
-
-    @BeforeMethod(alwaysRun = true)
+    @BeforeSuite
     public void setUp() {
-        RemoteWebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
-        drivers.set(driver);
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void cleanupBrowser() {
-        RemoteWebDriver driver = driver();
-        driver.quit();
-    }
-
-    protected RemoteWebDriver driver() {
-        RemoteWebDriver driver = drivers.get();
-        if (driver == null) {
-            throw new IllegalStateException("Driver should have not been null.");
-        }
-        return driver;
+        setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 }
