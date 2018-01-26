@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Element Selection" verbose="1" >
-    <test name="Element selection test" >
+    <test name="Element selection test" parallel="methods" thread-count="2">
         <classes>
             <class name="homework4.ElementSelectionTest"/>
             <class name="homework4.SliderSelectionTest"/>
