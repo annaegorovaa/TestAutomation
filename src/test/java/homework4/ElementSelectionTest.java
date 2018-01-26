@@ -3,10 +3,7 @@ package homework4;
 import base.SelenideTestBase;
 import com.codeborne.selenide.Selenide;
 import enums.*;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.HW4DifferentElementsPage;
 import pageObjects.HW4IndexPage;
 
@@ -20,16 +17,12 @@ public class ElementSelectionTest extends SelenideTestBase {
 
     @BeforeClass
     public void setUpClass() {
+        getWebDriver();
         indexPage = Selenide.page(HW4IndexPage.class);
         differentElementsPage = Selenide.page(HW4DifferentElementsPage.class);
     }
 
-    @BeforeTest
-    public void setUp() {
-        getWebDriver();
-    }
-
-    @AfterTest
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         close();
     }

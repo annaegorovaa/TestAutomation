@@ -2,10 +2,7 @@ package homework4;
 
 import base.SelenideTestBase;
 import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.HW4DatesPage;
 import pageObjects.HW4IndexPage;
 
@@ -19,16 +16,12 @@ public class SliderSelectionTest extends SelenideTestBase {
 
     @BeforeClass
     public void setUpClass() {
+        getWebDriver();
         indexPage = Selenide.page(HW4IndexPage.class);
         datesPage = Selenide.page(HW4DatesPage.class);
     }
 
-    @BeforeTest
-    public void setUp() {
-        getWebDriver();
-    }
-
-    @AfterTest
+    @AfterClass
     public void tearDown() {
         close();
     }
