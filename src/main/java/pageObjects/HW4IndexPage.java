@@ -1,5 +1,6 @@
 package pageObjects;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import enums.ServiceMenuItemsEnum;
 import org.openqa.selenium.support.FindBy;
@@ -60,8 +61,8 @@ public class HW4IndexPage {
     private SelenideElement datesMenuItem;
 
     @Step
-    public void openURL() {
-        open("https://jdi-framework.github.io/tests");
+    public void open() {
+        Selenide.open("https://jdi-framework.github.io/tests");
     }
 
     @Step

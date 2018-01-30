@@ -17,9 +17,6 @@ public class HW4DatesPage {
 
     @Step
     public void selectMaxSliderRange(int left, int right) {
-//        SelenideElement slider = $(".uui-slider");
-//        SelenideElement leftSlider = slider.find("a:nth-child(1)");
-//        SelenideElement rightSlider = slider.find("a:last-child");
         actions().dragAndDropBy(leftSlider, -300, 0).build().perform();
         actions().dragAndDropBy(rightSlider, -300, 0).build().perform();
         actions().dragAndDropBy(rightSlider, (int) (274.167 / 100 * right - 1.5), 0).build().perform();

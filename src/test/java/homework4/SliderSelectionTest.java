@@ -21,7 +21,7 @@ public class SliderSelectionTest extends SelenideTestBase {
         datesPage = Selenide.page(HW4DatesPage.class);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         close();
     }
@@ -30,7 +30,7 @@ public class SliderSelectionTest extends SelenideTestBase {
     public void testSliderSelection() {
 
         //1 Open test site by URL
-        indexPage.openURL();
+        indexPage.open();
 
         //2 Perform login
         indexPage.login("epam", "1234");

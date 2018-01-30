@@ -8,7 +8,8 @@ import pageObjects.HW4DifferentElementsPage;
 import pageObjects.HW4IndexPage;
 
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static enums.ColorDropdownEnum.YELLOW;
+import static enums.MenuTypesEnum.COLORS;
 
 public class ElementSelectionTest extends SelenideTestBase {
 
@@ -17,7 +18,6 @@ public class ElementSelectionTest extends SelenideTestBase {
 
     @BeforeClass
     public void setUpClass() {
-        getWebDriver();
         indexPage = Selenide.page(HW4IndexPage.class);
         differentElementsPage = Selenide.page(HW4DifferentElementsPage.class);
     }
@@ -31,7 +31,7 @@ public class ElementSelectionTest extends SelenideTestBase {
     public void testElementSelection() {
 
         //1 Open test site by URL
-        indexPage.openURL();
+        indexPage.open();
 
         //2 Perform login
         indexPage.login("epam", "1234");
@@ -64,7 +64,7 @@ public class ElementSelectionTest extends SelenideTestBase {
         differentElementsPage.selectDropdown();
 
         //12 Check in logs section selected values and status (true|false)
-        differentElementsPage.checkLog(0, MenuTypesEnum.COLORS.menuType, ColorDropdownEnum.YELLOW.color);
+        differentElementsPage.checkLog(0, COLORS.menuType, YELLOW.color);
         differentElementsPage.checkLog(1, MenuTypesEnum.METAL.menuType, MetalRadiosEnum.SELEN.metal);
         differentElementsPage.checkLog(2, CheckboxElementsEnum.WIND.element, BooleanValuesEnum.TRUE.booleanValue);
         differentElementsPage.checkLog(3, CheckboxElementsEnum.WATER.element, BooleanValuesEnum.TRUE.booleanValue);

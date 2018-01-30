@@ -1,5 +1,6 @@
 package pageObjects;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.CheckboxElementsEnum;
 import enums.ColorDropdownEnum;
@@ -16,13 +17,13 @@ import static org.testng.Assert.assertTrue;
 public class HW4DifferentElementsPage {
 
     @FindBy(css = ".label-checkbox")
-    private List<SelenideElement> checkboxes;
+    private ElementsCollection checkboxes;
 
     @FindBy(css = ".label-radio")
-    private List<SelenideElement> radios;
+    private ElementsCollection radios;
 
     @FindBy(css = "[value~='Button']")
-    private List<SelenideElement> buttons;
+    private ElementsCollection buttons;
 
     @FindBy(css = ".uui-pagination a[href^='page7']")
     private SelenideElement leftSection;
@@ -34,16 +35,16 @@ public class HW4DifferentElementsPage {
     private SelenideElement dropdown;
 
     @FindBy(css = ".colors option")
-    private List<SelenideElement> colors;
+    private ElementsCollection colors;
 
     @FindBy(css = ".info-panel-body-log li")
-    private List<SelenideElement> logEntries;
+    private ElementsCollection logEntries;
 
     @Step
     public void checkServicePageInterface() {
-        assertEquals(checkboxes.size(), 4);
-        assertEquals(radios.size(), 4);
-        assertEquals(buttons.size(), 2);
+        checkboxes.shouldHaveSize(4);
+        radios.shouldHaveSize(4);
+        buttons.shouldHaveSize(2);
         leftSection.shouldBe(visible);
         rightSection.shouldBe(visible);
     }
@@ -76,8 +77,8 @@ public class HW4DifferentElementsPage {
 
     @Step
     public void checkLog(int index, String property, String value) {
-        assertTrue(logEntries.get(index).getText().contains(property));
-        assertTrue(logEntries.get(index).getText().contains(value));
+        logEntries.get(index).shouldHave(text(property));
+        logEntries.get(index).shouldHave(text(value));
     }
 
     @Step
