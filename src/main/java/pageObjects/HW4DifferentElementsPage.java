@@ -11,8 +11,6 @@ import ru.yandex.qatools.allure.annotations.Step;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class HW4DifferentElementsPage {
 
