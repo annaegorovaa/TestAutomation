@@ -38,7 +38,7 @@ public class HW4DifferentElementsPage {
     private ElementsCollection colors;
 
     @FindBy(css = ".info-panel-body-log li")
-    private ElementsCollection logEntries;
+    private List<SelenideElement> logEntries;
 
     @Step
     public void checkServicePageInterface() {
