@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="JDI" verbose="1" >
+    <test name="JDI Element selection test" >
+        <classes>
+            <class name="homework7.MetalColorFormSubmitTest"/>
+        </classes>
+    </test>
+</suite>

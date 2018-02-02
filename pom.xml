@@ -51,6 +51,12 @@
             <groupId>ru.yandex.qatools.allure</groupId>
             <version>2.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-uitest-web</artifactId>
+            <version>1.0.71</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,7 +70,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/hw5testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/hw7testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
