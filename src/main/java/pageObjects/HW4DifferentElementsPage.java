@@ -2,9 +2,9 @@ package pageObjects;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.CheckboxElementsEnum;
-import enums.ColorDropdownEnum;
-import enums.MetalRadiosEnum;
+import enums.ElementsEnum;
+import enums.ColorsEnum;
+import enums.MetalsEnum;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -49,11 +49,11 @@ public class HW4DifferentElementsPage {
 
     @Step
     public void selectWaterWindCheckboxes() {
-        SelenideElement waterCheckbox = findCheckbox(0, CheckboxElementsEnum.WATER);
+        SelenideElement waterCheckbox = findCheckbox(0, ElementsEnum.WATER);
         waterCheckbox.find("input").click();
         waterCheckbox.find("input").shouldBe(checked);
 
-        SelenideElement windCheckbox = findCheckbox(2, CheckboxElementsEnum.WIND);
+        SelenideElement windCheckbox = findCheckbox(2, ElementsEnum.WIND);
         windCheckbox.find("input").click();
         windCheckbox.find("input").shouldBe(checked);
     }
@@ -61,7 +61,7 @@ public class HW4DifferentElementsPage {
     @Step
     public void selectRadio() {
         SelenideElement selenRadio = radios.get(3);
-        selenRadio.shouldHave(text(MetalRadiosEnum.SELEN.metal));
+        selenRadio.shouldHave(text(MetalsEnum.SELEN.metal));
         selenRadio.find("input").click();
         selenRadio.find("input").shouldBe(checked);
     }
@@ -70,7 +70,7 @@ public class HW4DifferentElementsPage {
     public void selectDropdown() {
         dropdown.click();
         colors.get(3).click();
-        dropdown.shouldHave(text(ColorDropdownEnum.YELLOW.color));
+        dropdown.shouldHave(text(ColorsEnum.YELLOW.color));
     }
 
     @Step
@@ -81,16 +81,16 @@ public class HW4DifferentElementsPage {
 
     @Step
     public void removeWaterWindSelection() {
-        SelenideElement waterCheckbox = findCheckbox(0, CheckboxElementsEnum.WATER);
+        SelenideElement waterCheckbox = findCheckbox(0, ElementsEnum.WATER);
         waterCheckbox.find("input").click();
         waterCheckbox.find("input").shouldNotBe(checked);
 
-        SelenideElement windCheckbox = findCheckbox(2, CheckboxElementsEnum.WIND);
+        SelenideElement windCheckbox = findCheckbox(2, ElementsEnum.WIND);
         windCheckbox.find("input").click();
         windCheckbox.find("input").shouldNotBe(checked);
     }
 
-    private SelenideElement findCheckbox(int index, CheckboxElementsEnum element) {
+    private SelenideElement findCheckbox(int index, ElementsEnum element) {
         SelenideElement checkbox = checkboxes.get(index);
         checkbox.shouldHave(text(element.element));
         return checkbox;

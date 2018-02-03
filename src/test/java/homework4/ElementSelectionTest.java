@@ -8,7 +8,7 @@ import pageObjects.HW4DifferentElementsPage;
 import pageObjects.HW4IndexPage;
 
 import static com.codeborne.selenide.Selenide.close;
-import static enums.ColorDropdownEnum.YELLOW;
+import static enums.ColorsEnum.YELLOW;
 import static enums.MenuTypesEnum.COLORS;
 
 public class ElementSelectionTest extends SelenideTestBase {
@@ -65,15 +65,15 @@ public class ElementSelectionTest extends SelenideTestBase {
 
         //12 Check in logs section selected values and status (true|false)
         differentElementsPage.checkLog(0, COLORS.menuType, YELLOW.color);
-        differentElementsPage.checkLog(1, MenuTypesEnum.METAL.menuType, MetalRadiosEnum.SELEN.metal);
-        differentElementsPage.checkLog(2, CheckboxElementsEnum.WIND.element, BooleanValuesEnum.TRUE.booleanValue);
-        differentElementsPage.checkLog(3, CheckboxElementsEnum.WATER.element, BooleanValuesEnum.TRUE.booleanValue);
+        differentElementsPage.checkLog(1, MenuTypesEnum.METAL.menuType, MetalsEnum.SELEN.metal);
+        differentElementsPage.checkLog(2, ElementsEnum.WIND.element, BooleanValuesEnum.TRUE.booleanValue);
+        differentElementsPage.checkLog(3, ElementsEnum.WATER.element, BooleanValuesEnum.TRUE.booleanValue);
 
         //13 Unselect and assert checkboxes
         differentElementsPage.removeWaterWindSelection();
 
         //14 Check in logs section unselected values and status (true|false)
-        differentElementsPage.checkLog(0, CheckboxElementsEnum.WIND.element, BooleanValuesEnum.FALSE.booleanValue);
-        differentElementsPage.checkLog(1, CheckboxElementsEnum.WATER.element, BooleanValuesEnum.FALSE.booleanValue);
+        differentElementsPage.checkLog(0, ElementsEnum.WIND.element, BooleanValuesEnum.FALSE.booleanValue);
+        differentElementsPage.checkLog(1, ElementsEnum.WATER.element, BooleanValuesEnum.FALSE.booleanValue);
     }
 }
