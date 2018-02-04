@@ -1,6 +1,6 @@
 package enums;
 
-public enum MetalRadiosEnum {
+public enum MetalsEnum {
     GOLD("Gold"),
     SILVER("Silver"),
     BRONZE("Bronze"),
@@ -8,7 +8,12 @@ public enum MetalRadiosEnum {
 
     public String metal;
 
-    MetalRadiosEnum(String metal) {
+    MetalsEnum(String metal) {
         this.metal = metal;
+    }
+
+    @Override
+    public String toString() {
+        return metal;
     }
 }

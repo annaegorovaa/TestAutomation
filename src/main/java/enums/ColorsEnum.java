@@ -1,6 +1,6 @@
 package enums;
 
-public enum ColorDropdownEnum {
+public enum ColorsEnum {
     RED("Red"),
     GREEN("Green"),
     BLUE("Blue"),
@@ -8,7 +8,7 @@ public enum ColorDropdownEnum {
 
     public String color;
 
-    ColorDropdownEnum(String color) {
+    ColorsEnum(String color) {
         this.color = color;
     }
 }

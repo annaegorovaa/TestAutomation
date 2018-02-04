@@ -1,6 +1,6 @@
 package enums;
 
-public enum CheckboxElementsEnum {
+public enum ElementsEnum {
     WATER("Water"),
     EARTH("Earth"),
     WIND("Wind"),
@@ -8,7 +8,7 @@ public enum CheckboxElementsEnum {
 
     public String element;
 
-    CheckboxElementsEnum(String element) {
+    ElementsEnum(String element) {
         this.element = element;
     }
 }
