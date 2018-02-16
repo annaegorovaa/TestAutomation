@@ -1,5 +1,7 @@
 package homework7;
 
+import entities.User;
+import enums.HeaderMenuItemsEnum;
 import org.testng.annotations.Test;
 
 import static pageObjects.JDISite.*;
@@ -11,11 +13,12 @@ public class MetalColorFormSubmitTest extends TestInit {
 
         //1 Login on JDI site as User
         homePage.open();
-        login();
+        login(new User());
         homePage.checkOpened();
 
         //2 Open Metals & Colors page by Header menu
-        openMetalsColorsPage();
+//        openMetalsColorsPage();
+        openPage(HeaderMenuItemsEnum.METALS_COLORS);
 
         //3 Fill form Metals & Colors by data below:
         //Summary: 3, 8

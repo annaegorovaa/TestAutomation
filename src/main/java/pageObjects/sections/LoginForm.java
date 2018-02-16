@@ -9,7 +9,7 @@ import entities.User;
 public class LoginForm extends Form<User> {
 
     @JFindBy(id="Login")
-    public TextField name;
+    public TextField login;
 
     @JFindBy(id="Password")
     public TextField password;

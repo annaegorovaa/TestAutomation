@@ -1,8 +1,10 @@
 package pageObjects;
 
+import com.epam.commons.DataClass;
 import com.epam.jdi.uitests.web.selenium.elements.common.Label;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JFindBy;
+import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
 import entities.MetalsColorsData;
 import entities.User;
@@ -28,15 +30,15 @@ public class JDISite extends WebSite {
     public static Label profilePhoto;
 
     @Step
-    public static void login() {
+    public static void login(User user) {
         profilePhoto.click();
-        loginForm.loginAs(new User());
-        homePage.checkUserName();
+        loginForm.loginAs(user);
+        homePage.checkUserName(user);
     }
 
     @Step
-    public static void openMetalsColorsPage() {
-        headerMenu.select(HeaderMenuItemsEnum.METALS_COLORS.item);
+    public static void openPage(Enum page) {
+        headerMenu.select(page.toString());
         metalsColorsPage.checkOpened();
     }
 
